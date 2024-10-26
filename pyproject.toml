@@ -1,0 +1,41 @@
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry]
+name = "cryptic"
+version = "0.1.0"
+description = ""
+authors = ["daddinuz <daddinuz@gmail.com>"]
+readme = "README.md"
+license = "MIT"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+base58 = "^2.1.1"
+
+[tool.poetry.group.dev.dependencies]
+pyright = "^1.1.350"
+black = "^24.1.1"
+
+[tool.poetry.scripts]
+analyzer = 'scripts:analyzer'
+"--bin" = 'scripts:bin'
+"--example" = 'scripts:example'
+test = 'scripts:test'
+fmt = 'scripts:fmt'
+
+[tool.pyright]
+pythonPlatform = "Linux"
+pythonVersion = "3.12"
+exclude = ["**/node_modules", "**/__pycache__"]
+include = ["src"]
+typeCheckingMode = "strict"
+verboseOutput = true
+reportMissingImports = true
+executionEnvironment = [
+  {root = "src"}
+]
+
+[tool.black]
+line-length = 79
